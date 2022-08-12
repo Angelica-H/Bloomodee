@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 11, 2022 lúc 01:40 PM
+-- Thời gian đã tạo: Th8 12, 2022 lúc 09:48 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -64,7 +64,9 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone_number`, `address`, `token`) VALUES
-(1, 'hùng nguyen hung', 'nguyenvanhung0297@gmail.com', '321', '961919603', 'hoàng mai hà nội', NULL);
+(1, 'hùng nguyen hung', 'nguyenvanhung0297@gmail.com', '321', '961919603', 'hoàng mai hà nội', NULL),
+(6, 'Tâm', 'tam@gmail.com', '123', '123', '123', NULL),
+(7, 'tit', 'tit@gmail.com', '123', '123', '123', NULL);
 
 -- --------------------------------------------------------
 
@@ -113,13 +115,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `address_receiver`, `status`, `created_at`, `total_price`) VALUES
-(1, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '1', '2022-08-10 11:59:44', 1200000),
-(2, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '1', '2022-08-10 11:31:04', 400000),
-(3, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-08 20:01:29', 400000),
-(4, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-08 20:10:32', 200000),
-(5, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-10 13:45:26', 1100000),
-(6, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-10 14:56:40', 550000),
-(7, 1, 'Nguyễn Văn Hùng', '0961919603', 'hoàng mai hà nội', '0', '2022-08-11 06:01:50', 1350000);
+(8, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 12:53:12', 200000),
+(9, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 12:57:05', 200000),
+(10, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 13:17:27', 400000),
+(11, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 13:20:48', 400000),
+(12, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 13:21:02', 400000),
+(13, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 19:32:10', 400000);
 
 -- --------------------------------------------------------
 
@@ -130,28 +131,20 @@ INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `a
 CREATE TABLE `order_product` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `quantity` int(11) NOT NULL,
+  `size_product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `order_product`
 --
 
-INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
-(1, 11, 3),
-(1, 12, 2),
-(1, 16, 1),
-(2, 10, 1),
-(2, 12, 1),
-(3, 11, 2),
-(4, 11, 1),
-(5, 12, 4),
-(5, 15, 2),
-(6, 9, 1),
-(6, 10, 1),
-(6, 15, 1),
-(7, 15, 1),
-(7, 19, 6);
+INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`, `size_product_id`) VALUES
+(11, 9, 2, 0),
+(12, 10, 1, 0),
+(12, 11, 1, 0),
+(13, 11, 1, 2),
+(13, 12, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -184,6 +177,27 @@ INSERT INTO `products` (`id`, `name`, `image`, `price`, `description`, `manufact
 (18, 'Áo frezee', '1659349816.jpg', 200000, '- Thành phần: Cotton 100% co giãn 4c \r\n- Xuất sứ: Việt nam\r\n- Form dáng: Slimfit vừa vặn, trẻ trung, lịch lãm\r\n- Màu sắc: (5 màu) Đen / Trắng / Xanh vỏ đậu/ Cam đỏ / Nâu/ xanh đen \r\n- Chọn màu và Size bằng cách nhắn tin cho shop or ghi chú nhé\r\n- BẢNG SIZE:\r\n+ Size M:  Chiều cao: 1m50-1m70, Cân nặng: 50-60kg, Dài: 68cm Vòng 1: 92-96cm, Vòng bụng: 83-85cm\r\n+ Size L:   Chiều cao: 1m65-1m75, Cân nặng: 61-69kg, Dài: 68cm Vòng 1: 95-99cm, Vòng bụng: 86-90cm\r\n+ Size XL: Chiều cao: 1m50-1m70, Cân nặng: 70-80kg, Dài: 70cm Vòng 1: 98-102cm, Vòng bụng: 91-95cm\r\n- Hướng dẫn bảo quản\r\n+ Giặt máy với chu kỳ trung bình và vòng quay ngắn\r\n+ Giặt với nhiệt độ tối đa 30 độ C\r\n+ Sấy ở nhiệt độ thường\r\n+ Là ủi ở nhiệt độ thấp', 5),
 (19, 'váy cute', '1659349834.jpg', 200000, '- Thành phần: Cotton 100% co giãn 4c \r\n- Xuất sứ: Việt nam\r\n- Form dáng: Slimfit vừa vặn, trẻ trung, lịch lãm\r\n- Màu sắc: (5 màu) Đen / Trắng / Xanh vỏ đậu/ Cam đỏ / Nâu/ xanh đen \r\n- Chọn màu và Size bằng cách nhắn tin cho shop or ghi chú nhé\r\n- BẢNG SIZE:\r\n+ Size M:  Chiều cao: 1m50-1m70, Cân nặng: 50-60kg, Dài: 68cm Vòng 1: 92-96cm, Vòng bụng: 83-85cm\r\n+ Size L:   Chiều cao: 1m65-1m75, Cân nặng: 61-69kg, Dài: 68cm Vòng 1: 95-99cm, Vòng bụng: 86-90cm\r\n+ Size XL: Chiều cao: 1m50-1m70, Cân nặng: 70-80kg, Dài: 70cm Vòng 1: 98-102cm, Vòng bụng: 91-95cm\r\n- Hướng dẫn bảo quản\r\n+ Giặt máy với chu kỳ trung bình và vòng quay ngắn\r\n+ Giặt với nhiệt độ tối đa 30 độ C\r\n+ Sấy ở nhiệt độ thường\r\n+ Là ủi ở nhiệt độ thấp', 6),
 (20, 'áo đẹp free style', '1659871849.jpg', 150000, '- Thành phần: Cotton 100% co giãn 4c - Xuất sứ: Việt nam - Form dáng: Slimfit vừa vặn, trẻ trung, lịch lãm - Màu sắc: (5 màu) Đen / Trắng / Xanh vỏ đậu/ Cam đỏ / Nâu/ xanh đen - Chọn màu và Size bằng cách nhắn tin cho shop or ghi chú nhé - BẢNG SIZE: + Size M: Chiều cao: 1m50-1m70, Cân nặng: 50-60kg, Dài: 68cm Vòng 1: 92-96cm, Vòng bụng: 83-85cm + Size L: Chiều cao: 1m65-1m75, Cân nặng: 61-69kg, Dài: 68cm Vòng 1: 95-99cm, Vòng bụng: 86-90cm + Size XL: Chiều cao: 1m50-1m70, Cân nặng: 70-80kg, Dài: 70cm Vòng 1: 98-102cm, Vòng bụng: 91-95cm - Hướng dẫn bảo quản + Giặt máy với chu kỳ trung bình và vòng quay ngắn + Giặt với nhiệt độ tối đa 30 độ C + Sấy ở nhiệt độ thường + Là ủi ở nhiệt độ thấp', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `product_size`
+--
+
+CREATE TABLE `product_size` (
+  `size_id` int(11) NOT NULL,
+  `size_name` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `product_size`
+--
+
+INSERT INTO `product_size` (`size_id`, `size_name`) VALUES
+(1, 'S'),
+(2, 'M'),
+(3, 'L'),
+(4, 'XL');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -220,7 +234,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_product`
   ADD PRIMARY KEY (`order_id`,`product_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `size_product_id` (`size_product_id`);
 
 --
 -- Chỉ mục cho bảng `products`
@@ -228,6 +243,12 @@ ALTER TABLE `order_product`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `manufacturer_id` (`manufacturer_id`);
+
+--
+-- Chỉ mục cho bảng `product_size`
+--
+ALTER TABLE `product_size`
+  ADD PRIMARY KEY (`size_id`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -243,7 +264,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `manufacturers`
@@ -255,13 +276,19 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT cho bảng `product_size`
+--
+ALTER TABLE `product_size`
+  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
