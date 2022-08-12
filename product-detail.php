@@ -149,8 +149,12 @@
                                             </div>
                                         </div>
                                         <div class="action">
-                                            <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                                            <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Mua ngay</a>
+                                            <?php if (!empty($_SESSION['id'])) {
+                                            ?>
+                                                <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                            <?php } else { ?>
+                                                <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </form>
@@ -273,7 +277,12 @@
                                         </div>
                                         <div class="product-price">
                                             <h3><?php echo number_format($each['price'], 0, ',', '.') ?><span>đ</span></h3>
-                                            <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                            <?php if (!empty($_SESSION['id'])) {
+                                            ?>
+                                                <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                            <?php } else { ?>
+                                                <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -455,7 +464,12 @@
                                     </div>
                                     <div class="product-price">
                                         <h3><?php echo number_format($each['price'], 0, ',', '.') ?><span>đ</span></h3>
-                                        <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                        <?php if (!empty($_SESSION['id'])) {
+                                ?>
+                                    <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                <?php } else { ?>
+                                    <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                <?php } ?>
                                     </div>
                                 </div>
                             <?php endforeach ?>

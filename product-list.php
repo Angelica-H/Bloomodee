@@ -176,6 +176,8 @@
                                         <?php if (!empty($_SESSION['id'])) {
                                         ?>
                                             <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                        <?php } else { ?>
+                                            <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
                                         <?php } ?>
                                     </div>
                                 </div>
