@@ -116,17 +116,30 @@
                                                             +
                                                         </a>
                                                     </div>
-                                                    <!-- <div class="col-md-1 col-lg-2 col-xl-2 d-flex">
+                                                    <div class="col-md-1 col-lg-2 col-xl-2 d-flex">
+                                                        <?php
+                                                        include 'admin/connect.php';
+                                                        $sql = "select * from product_size";
+                                                        $resulttt = mysqli_query($connect, $sql);
+                                                        $si = mysqli_fetch_array($resulttt)
+                                                        ?>
+                                                        <select>
+                                                            <?php foreach ($resulttt as $si) : ?>
+                                                                <option value="<?php echo $si['size_id'] ?>" <?php if ($si['size_id'] == $_SESSION['cart'][$id]['size']) { ?> selected <?php } ?>>
 
-                                                        <select name="size" class="form-select">
+                                                                    <?php echo $si['size_name'] ?>
+                                                                </option>
+                                                            <?php endforeach ?>
+                                                        </select>
+                                                        <!-- <select name="size" class="form-select">
                                                             
                                                             <option value="S">S</option>
                                                             <option value="M">M</option>
                                                             <option value="L">L</option>
                                                             <option value="XL">XL</option>
-                                                        </select>
+                                                        </select> -->
                                                     </div>
-                                                    <div class="col-md-1 col-lg-2 col-xl-2 d-flex">
+                                                    <!-- <div class="col-md-1 col-lg-2 col-xl-2 d-flex">
 
                                                         <select name="color" class="form-select">
                                                             <option value="trắng">trắng</option>

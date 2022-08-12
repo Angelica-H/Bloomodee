@@ -120,8 +120,10 @@
 
                         </div>
                         <?php
-                        if(empty($_SESSION['cart'])){
-                        $cart = $_SESSION['cart'];};
+                        if(empty($_SESSION['cart'])){$cart='';
+                        }
+                        else
+                        {$cart = $_SESSION['cart'];};
                         $sum = 0;
                         ?>
                         <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">

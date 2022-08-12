@@ -92,6 +92,7 @@
                             $result = mysqli_query($connect, $sql);
                             $each = mysqli_fetch_array($result);
                             ?>
+                            
                             <div class="col-md-5">
                                 <div class="product-slider-single normal-slider">
                                     <img src="admin/products/photos/<?php echo $each['image'] ?>">
@@ -100,10 +101,11 @@
 
                             </div>
                             <div class="col-md-7">
-                                <form action="">
+                                <form action="add_to_cart.php" method="GET">
                                     <div class="product-content">
                                         <div class="title">
                                             <h2><?php echo $each['name'] ?></h2>
+                                            <input type="hidden" value="<?php echo $each['id']?>" name="id">
                                         </div>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
@@ -124,38 +126,51 @@
                                             <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div> -->
-                                        <div class="p-size">
-                                            <h4>Size:</h4>
-                                            <!-- <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn" value="s">S</button>
-                                            <button type="button" class="btn" value="M">M</button>
-                                            <button type="button" class="btn" value="L">L</button>
-                                            <button type="button" class="btn" value="XL">XL</button>
-                                        </div> -->
+                                       
+                                            <div class="p-size">
+                                                <h4>Size:</h4>
+                                                <?php
+                                                include 'admin/connect.php';
+                                                $sql = "select * from product_size";
+                                                $result = mysqli_query($connect, $sql);
 
-                                            <select name="size" class="form-select">
+                                                ?>
+                                                <div class="btn-group btn-group-sm" name="size_id">
+                                                    <select name="size_id" >
+                                                        <?php foreach ($result as $each) : ?>
+                                                            <option value="<?php echo $each['size_id'] ?>"><?php echo $each['size_name'] ?></option>
+                                                            <?php endforeach ?>
+                                                    </select>
+
+
+
+                                                </div>
+
+                                                <!-- <select name="size" class="form-select">
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
                                                 <option value="L">L</option>
                                                 <option value="XL">XL</option>
-                                            </select>
-                                        </div>
-                                        <div class="p-color">
-                                            <h4>Màu:</h4>
-                                            <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn" value="Trắng">Trắng</button>
-                                                <button type="button" class="btn" value="Đen">Đen</button>
-                                                <button type="button" class="btn" value="Xanh">Xanh</button>
+                                            </select> -->
                                             </div>
-                                        </div>
-                                        <div class="action">
-                                            <?php if (!empty($_SESSION['id'])) {
-                                            ?>
-                                                <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                            <?php } else { ?>
-                                                <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                            <?php } ?>
-                                        </div>
+                                            <div class="p-color">
+                                                <h4>Màu:</h4>
+                                                <div class="btn-group btn-group-sm">
+                                                    <button type="button" class="btn" value="Trắng">Trắng</button>
+                                                    <button type="button" class="btn" value="Đen">Đen</button>
+                                                    <button type="button" class="btn" value="Xanh">Xanh</button>
+                                                </div>
+                                            </div>
+                                            <div class="action">
+                                                <?php if (!empty($_SESSION['id'])) {
+                                                ?>
+                                                <button class="btn">Thêm giỏ hàng</button>
+                                                    <!-- <a class="btn" href="add_to_cart.php?id="><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a> -->
+                                                <?php } else { ?>
+                                                    <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                                <?php } ?>
+                                            </div>
+                                        
                                     </div>
                                 </form>
                             </div>
@@ -465,11 +480,11 @@
                                     <div class="product-price">
                                         <h3><?php echo number_format($each['price'], 0, ',', '.') ?><span>đ</span></h3>
                                         <?php if (!empty($_SESSION['id'])) {
-                                ?>
-                                    <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                <?php } else { ?>
-                                    <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                <?php } ?>
+                                        ?>
+                                            <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                        <?php } else { ?>
+                                            <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             <?php endforeach ?>
