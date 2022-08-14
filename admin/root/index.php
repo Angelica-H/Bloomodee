@@ -1,17 +1,22 @@
-<?php  
- require'../check_admin_login.php'
- ?>
+<?php
+require '../check_admin_login.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/menu.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/bg-galaxy.css">
 </head>
+
 <body>
-  <?php include '../menu.php' ?>
-  
+  <div ><?php include '../menu.php' ?></div>
+
+
 </body>
+
 </html>

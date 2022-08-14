@@ -83,7 +83,7 @@
                 <div class="col-md-3">
                     <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Bảng điều khiển</a>
-                        <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Giỏ hàng</a>
+                        <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Đơn hàng của bạn</a>
                         <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Phương thức thanh toán</a>
                         <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Địa chỉ</a>
                         <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Chi tiết tài khoản</a>
@@ -119,52 +119,66 @@
 
 
                         </div>
+                        <!-- don hang -->
                         <?php
-                        if(empty($_SESSION['cart'])){$cart='';
-                        }
-                        else
-                        {$cart = $_SESSION['cart'];};
-                        $sum = 0;
+                        require 'admin/connect.php';
+                        $customer_id = $_SESSION['id'];
+                        $sql = "select orders.*
+                        from orders
+                        join customers
+                        on customers.id = orders.customer_id where customers.id='$customer_id'";
+                        $result = mysqli_query($connect, $sql);
                         ?>
                         <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>Ảnh</th>
-                                            <th>Sản phẩm</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Thông tin người nhận</th>
                                             <th>Giá</th>
-                                            <th>số lượng</th>
-                                            <th>thành tiền</th>
+                                            <th>Thành tiền</th>
+                                            <th>Xem chi tiết</th>
                                         </tr>
                                     </thead>
-                                    <?php foreach ($cart as $id => $each) : ?>
-                                        <tbody>
+                                    <?php foreach ($result as $each) : ?>
+                                        <tr>
+                                            <td><?php echo $each['id'] ?></td>
+                                            <td><?php echo $each['created_at'] ?></td>
+                                            <td>
+                                                <?php echo $each['name_receiver'] ?><br>
+                                                <?php echo $each['phone_receiver'] ?><br>
+                                                <?php echo $each['address_receiver'] ?><br>
+                                            </td>
 
-                                            <tr>
-                                                <td><img height='100' src="admin/products/photos/<?php echo $each['image'] ?>"></td>
-                                                <td><?php echo $each['name'] ?></td>
-                                                <td><?php echo $each['price'] ?>đ</td>
-                                                <td><a href="update_quantity_in_cart.php?id=<?php echo $id ?>&type=decre">
-                                                        -
-                                                    </a>
-                                                    <?php echo $each['quantity'] ?>
-                                                    <a href="update_quantity_in_cart.php?id=<?php echo $id ?>&type=incre">
-                                                        +
-                                                    </a>
-                                                </td>
-                                                <td><?php
-                                                    $result = $each['price'] * $each['quantity'];
-                                                    echo $result;
-                                                    $sum += $result;
-                                                    ?></td>
-                                                <td><button class="btn">Xem</button></td>
-                                            </tr>
-                                        </tbody>
+                                            <td>
+                                                <?php
+                                                switch ($each['status']) {
+                                                    case '0':
+                                                        echo "Mới đặt";
+                                                        break;
+                                                    case '1':
+                                                        echo "Đã duyệt";
+                                                        break;
+                                                    case '2':
+                                                        echo "Đã huỷ";
+                                                        break;
+                                                }
+                                                ?>
+                                            </td>
+                                            <td><?php echo number_format($each['total_price'], 0, ',', '.') ?></td>
+                                            <td>
+                                                <a href="order_detail.php?id=<?php echo $each['id'] ?>">
+                                                    Xem
+                                                </a>
+                                            </td>
+
+                                        </tr>
                                     <?php endforeach ?>
                                 </table>
                             </div>
                         </div>
+                        <!-- don hang -->
                         <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                             <h4>Phương thức thanh toán</h4>
                             <p>

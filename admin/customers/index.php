@@ -11,15 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/table.css"><link rel="stylesheet" href="../css/bg-galaxy.css">
 </head>
 
 <body>
 
     <?php include '../menu.php' ?>
     <br>
-    khu vuc quan ly nha san xuat
+    <h1>Quản lý người dùng</h1>
     <br>
-    <a href="form_insert.php">Thêm </a>
+    <div class="btn"><a href="form_insert.php">Thêm người dùng </a></div>
+
+    <h1 style="font-size: 20px;"><?php include'../notification.php'?>
+    </h1>
     <!-- hien thi d lieu -->
     <?php
     include '../connect.php';
@@ -29,7 +33,7 @@
     <!-- end hien thi  -->
     <!-- hien ket qua -->
 
-    <table border="1" width="100%">"
+    <table border="1" width="100%">
         <tr>
             <th>Mã</th>
             <th>Tên</th>
@@ -64,5 +68,5 @@
         <?php endforeach ?>
     </table>
 </body>
-
+<script src="//use.edgefonts.net/changa-one.js"></script>
 </html>

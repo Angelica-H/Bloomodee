@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 12, 2022 lúc 09:48 PM
+-- Thời gian đã tạo: Th8 14, 2022 lúc 09:50 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -64,9 +64,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone_number`, `address`, `token`) VALUES
-(1, 'hùng nguyen hung', 'nguyenvanhung0297@gmail.com', '321', '961919603', 'hoàng mai hà nội', NULL),
-(6, 'Tâm', 'tam@gmail.com', '123', '123', '123', NULL),
-(7, 'tit', 'tit@gmail.com', '123', '123', '123', NULL);
+(1, 'hùng nguyen hung', 'nguyenvanhung0297@gmail.com', '321', '0961919603', 'hoàng mai hà nội', NULL),
+(8, 'Quyết Tâm', 'ngotam@gmail.com', '123', '0132323123', '123', NULL);
 
 -- --------------------------------------------------------
 
@@ -115,12 +114,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `address_receiver`, `status`, `created_at`, `total_price`) VALUES
-(8, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 12:53:12', 200000),
-(9, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 12:57:05', 200000),
-(10, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 13:17:27', 400000),
-(11, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 13:20:48', 400000),
-(12, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 13:21:02', 400000),
-(13, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '0', '2022-08-12 19:32:10', 400000);
+(17, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '1', '2022-08-13 18:44:04', 400000),
+(18, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '0', '2022-08-14 05:41:02', 200000),
+(19, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '0', '2022-08-14 05:42:19', 200000),
+(20, 8, 'Quyết Tâm', '0132323123', '123', '0', '2022-08-14 07:46:45', 750000);
 
 -- --------------------------------------------------------
 
@@ -140,11 +137,13 @@ CREATE TABLE `order_product` (
 --
 
 INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`, `size_product_id`) VALUES
-(11, 9, 2, 0),
-(12, 10, 1, 0),
-(12, 11, 1, 0),
-(13, 11, 1, 2),
-(13, 12, 1, 3);
+(17, 9, 1, 1),
+(17, 10, 1, 1),
+(18, 10, 1, 4),
+(19, 11, 1, 3),
+(20, 11, 2, 1),
+(20, 12, 1, 1),
+(20, 15, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -227,7 +226,7 @@ ALTER TABLE `manufacturers`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `customer_id` (`customer_id`);
+  ADD KEY `orders_ibfk_1` (`customer_id`);
 
 --
 -- Chỉ mục cho bảng `order_product`
@@ -264,25 +263,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `product_size`

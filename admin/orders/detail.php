@@ -6,10 +6,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
+	<link rel="stylesheet" href="../css/menu.css">
+	<link rel="stylesheet" href="../css/table.css">
+	<link rel="stylesheet" href="../css/bg-galaxy.css">
 </head>
 
 <body>
+	
 	<?php
+	include'../menu.php';
 	$order_id = $_GET['id'];
 	require '../connect.php';
 	$sql = "select 
@@ -20,6 +25,7 @@ where order_id = '$order_id'";
 	$result = mysqli_query($connect, $sql);
 	$sum = 0;
 	?>
+	<h1>chi tiết đơn hàng</h1>
 	<table border="1" width="100%">
 		<tr>
 			<th>Ảnh</th>

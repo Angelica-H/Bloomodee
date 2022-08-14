@@ -10,6 +10,7 @@ require '../check_admin_login.php'
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/table.css"><link rel="stylesheet" href="../css/bg-galaxy.css">
 </head>
 
 <body>
@@ -21,9 +22,11 @@ require '../check_admin_login.php'
 
 
   ?>
-  
+
   <h1>quản lý sản phẩm </h1>
-  <a href="form_insert.php">Thêm sản phẩm</a>
+  <div class="btn"><a href="form_insert.php">Thêm sản phẩm</a></div>
+  <h1 style="font-size: 20px;"><?php include '../notification.php' ?></h1>
+
   <table border="1" width="100%">
     <tr>
       <th>Mã</th>
@@ -41,7 +44,7 @@ require '../check_admin_login.php'
         <td><?php echo $each['name'] ?></td>
         <td><img src="photos/<?php echo $each['image'] ?>" height="100"></td>
         <td><?php echo $each['price'] ?></td>
-        <td><?php echo $each['description'] ?></td>
+        <td><?php echo substr("$each[description]", -100) ?></td>
         <td>
           <a href="form_update.php?id=<?php echo $each['id'] ?>">sửa</a>
         </td>
@@ -52,7 +55,7 @@ require '../check_admin_login.php'
     <?php endforeach ?>
   </table>
   <!-- hihi -->
-  
+
   <!-- /.container -->
   <script src="../js/js_table_ds.js"></script>
 </body>

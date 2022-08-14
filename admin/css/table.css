@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper a {
+    text-align: center;
+}
+
+table {
+    margin: auto;
+    width: 80%;
+    border:none;
+    border-collapse: collapse;
+   
+}
+
+h1 {
+    text-align: center;
+}
+
+tr {
+    text-align: center;
+}
+
+tr:nth-child(odd) {
+    background-color: #EEEEEE;
+
+}
+
+tr:nth-child(even) {
+    background-color: #c7c2c2;
+
+}
+tr:first-child {
+    background-color: #ffffff;
+
+}
+tr:first-child th {
+    padding: 10px;
+    font-size: 20px;
+
+}
+.btn {
+    text-align: center;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.btn a {
+    width: 30px;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    color: #000000;
+}
+
+a {
+    text-decoration: none;
+}

@@ -23,7 +23,7 @@
 
 /* Main level */
 .menu {			
-  margin: 50px auto;
+  margin:auto;
   width: 800px;
   /* http://www.red-team-design.com/horizontal-centering-using-css-fit-content-value */
   width: -moz-fit-content;
@@ -135,4 +135,7 @@
 
 .menu > li:hover .submenu li:nth-child(odd){
   transform: skewX(-25deg) translateX(-15px);			
+}
+h1{
+  color: #fff;
 }
