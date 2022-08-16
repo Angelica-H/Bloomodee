@@ -21,7 +21,7 @@ if (empty($_POST['newpw'])) {
     where id = '$id'";
 } else {
     if ($newpw != $repw) {
-        header('location:my-account.php?error=mật khẩu không khớp yêu cầu nhập lại');
+        header('location:../my-account.php?error=mật khẩu không khớp yêu cầu nhập lại');
     } else {
         $sql = " update customers set
     password = '$newpw'
@@ -31,4 +31,4 @@ if (empty($_POST['newpw'])) {
 
 mysqli_query($connect, $sql);
 mysqli_close($connect);
-header('location:my-account.php?success= Cập nhật thành công');
+header('location:../my-account.php?success= Cập nhật thành công');
