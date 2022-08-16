@@ -68,8 +68,8 @@
     <div class="breadcrumb-wrap">
         <div class="container-fluid">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="product-list.php">Sản phẩm</a></li>
                 <li class="breadcrumb-item active">Danh sách sản phẩm</li>
             </ul>
         </div>
@@ -166,8 +166,8 @@
                                             <img src="admin/products/photos/<?php echo $each['image'] ?>">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
+                                            <!-- <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                            <a href="#"><i class="fa fa-heart"></i></a> -->
                                             <a href="product-detail.php?id=<?php echo $each['id'] ?>"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
@@ -473,8 +473,8 @@
                                             <img src="admin/products/photos/<?php echo  $pro['image'] ?>">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
+                                            <!-- <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                            <a href="#"><i class="fa fa-heart"></i></a> -->
                                             <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>

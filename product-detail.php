@@ -70,8 +70,8 @@
     <div class="breadcrumb-wrap">
         <div class="container-fluid">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="product-list.php">Sản phẩm</a></li>
                 <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
             </ul>
         </div>
@@ -231,7 +231,7 @@
                                     $result=mysqli_query($connect,$sql);
                                     $re=mysqli_fetch_array($result)
                                 ?>
-                                    <?php foreach($result as $rere) :?>
+                                    <?php foreach($result as $re) :?>
                                     <div class="reviews-submitted">
                                         <div class="reviewer"><?php echo $re['user_review'] ?></div>
                                         <div class="ratting">
@@ -315,8 +315,8 @@
                                             <img src="admin/products/photos/<?php echo $pro['image'] ?>">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
+                                            <!-- <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                            <a href="#"><i class="fa fa-heart"></i></a> -->
                                             <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><i
                                                     class="fa fa-search"></i></a>
                                         </div>
@@ -506,8 +506,8 @@
                                         <img src="admin/products/photos/<?php echo  $pro['image'] ?>">
                                     </a>
                                     <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <!-- <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a> -->
                                         <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><i
                                                 class="fa fa-search"></i></a>
                                     </div>

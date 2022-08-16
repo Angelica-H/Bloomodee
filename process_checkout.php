@@ -3,8 +3,9 @@
 $name_receiver = $_POST['name_receiver'];
 $phone_receiver = $_POST['phone_receiver'];
 $address_receiver = $_POST['address_receiver'];
-
+$email_receiver= $_POST['email_receiver'];
 require 'admin/connect.php';
+require 'mail.php';
 session_start();
 
 $cart = $_SESSION['cart'];
@@ -32,6 +33,13 @@ foreach($cart as $product_id => $each){
 	values('$order_id', '$product_id', '$quantity','$size_product_id','$color_product_id')";
 	mysqli_query($connect,$sql);
 }
+$content='Dat hang thanh cong';
+$description='Quay lại trang web để kiểm tra đơn hàng';
+$mail_send=$email_receiver;
+$name=$name_receiver;
+$mail = new mailer();
+$mail->dathangmail($content,$mail_send,$name,$description);
+
 mysqli_close($connect);
 unset($_SESSION['cart']);
 
