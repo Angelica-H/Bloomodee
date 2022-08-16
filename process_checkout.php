@@ -27,8 +27,9 @@ $order_id = mysqli_fetch_array($result)['max(id)'];
 foreach($cart as $product_id => $each){
 	$quantity = $each['quantity'];
 	$size_product_id =$each['size'];
-	$sql = "insert into order_product(order_id, product_id, quantity,size_product_id)
-	values('$order_id', '$product_id', '$quantity','$size_product_id')";
+	$color_product_id =$each['color'];
+	$sql = "insert into order_product(order_id, product_id, quantity,size_product_id,color_product_id)
+	values('$order_id', '$product_id', '$quantity','$size_product_id','$color_product_id')";
 	mysqli_query($connect,$sql);
 }
 mysqli_close($connect);

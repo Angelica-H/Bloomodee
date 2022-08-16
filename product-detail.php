@@ -12,7 +12,8 @@
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -90,12 +91,12 @@
                             $sql = "select * from products
                                 where id = '$id'";
                             $result = mysqli_query($connect, $sql);
-                            $each = mysqli_fetch_array($result);
+                            $each1 = mysqli_fetch_array($result);
                             ?>
-                            
+
                             <div class="col-md-5">
                                 <div class="product-slider-single normal-slider">
-                                    <img src="admin/products/photos/<?php echo $each['image'] ?>">
+                                    <img src="admin/products/photos/<?php echo $each1['image'] ?>">
 
                                 </div>
 
@@ -104,8 +105,8 @@
                                 <form action="add_to_cart.php" method="GET">
                                     <div class="product-content">
                                         <div class="title">
-                                            <h2><?php echo $each['name'] ?></h2>
-                                            <input type="hidden" value="<?php echo $each['id']?>" name="id">
+                                            <h2><?php echo $each1['name'] ?></h2>
+                                            <input type="hidden" value="<?php echo $each1['id']?>" name="id">
                                         </div>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
@@ -116,7 +117,8 @@
                                         </div>
                                         <div class="price">
                                             <h4>Giá:</h4>
-                                            <p><?php echo number_format($each['price'], 0, ',', '.') ?>đ <span></span></p>
+                                            <p><?php echo number_format($each1['price'], 0, ',', '.') ?>đ <span></span>
+                                            </p>
                                         </div>
                                         <!-- <div class="quantity">
                                         <h4>Số lượng:</h4>
@@ -126,51 +128,65 @@
                                             <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div> -->
-                                       
-                                            <div class="p-size">
-                                                <h4>Size:</h4>
-                                                <?php
+
+                                        <div class="p-size">
+                                            <h4>Size:</h4>
+                                            <?php
                                                 include 'admin/connect.php';
                                                 $sql = "select * from product_size";
                                                 $result = mysqli_query($connect, $sql);
 
                                                 ?>
-                                                <div class="btn-group btn-group-sm" name="size_id">
-                                                    <select name="size_id" >
-                                                        <?php foreach ($result as $each) : ?>
-                                                            <option value="<?php echo $each['size_id'] ?>"><?php echo $each['size_name'] ?></option>
-                                                            <?php endforeach ?>
-                                                    </select>
+                                            <div class="btn-group btn-group-sm" name="size_id">
+                                                <select name="size_id">
+                                                    <?php foreach ($result as $each) : ?>
+                                                    <option value="<?php echo $each['size_id'] ?>">
+                                                        <?php echo $each['size_name'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
 
 
 
-                                                </div>
+                                            </div>
 
-                                                <!-- <select name="size" class="form-select">
+                                            <!-- <select name="size" class="form-select">
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
                                                 <option value="L">L</option>
                                                 <option value="XL">XL</option>
                                             </select> -->
-                                            </div>
-                                            <div class="p-color">
-                                                <h4>Màu:</h4>
-                                                <div class="btn-group btn-group-sm">
-                                                    <button type="button" class="btn" value="Trắng">Trắng</button>
-                                                    <button type="button" class="btn" value="Đen">Đen</button>
-                                                    <button type="button" class="btn" value="Xanh">Xanh</button>
-                                                </div>
-                                            </div>
-                                            <div class="action">
-                                                <?php if (!empty($_SESSION['id'])) {
+                                        </div>
+                                        <div class="p-color">
+                                            <h4>Màu:</h4>
+                                            <?php
+                                                include 'admin/connect.php';
+                                                $sql = "select * from product_color";
+                                                $result = mysqli_query($connect, $sql);
+                                                $each_color=mysqli_fetch_array($result)            
                                                 ?>
-                                                <button class="btn">Thêm giỏ hàng</button>
-                                                    <!-- <a class="btn" href="add_to_cart.php?id="><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a> -->
-                                                <?php } else { ?>
-                                                    <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                                <?php } ?>
+                                            <div class="btn-group btn-group-sm" name="color_id">
+                                                <select name="color_id">
+                                                    <?php foreach ($result as $each_color) : ?>
+                                                    <option value="<?php echo $each_color['color_id'] ?>">
+                                                        <?php echo $each_color['color_name'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+
+
+
                                             </div>
-                                        
+                                        </div>
+                                        <div class="action">
+                                            <?php if (!empty($_SESSION['id'])) {
+                                                ?>
+                                            <button class="btn">Thêm giỏ hàng</button>
+                                            <!-- <a class="btn" href="add_to_cart.php?id="><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a> -->
+                                            <?php } else { ?>
+                                            <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ
+                                                hàng</a>
+                                            <?php } ?>
+                                        </div>
+
                                     </div>
                                 </form>
                             </div>
@@ -195,7 +211,8 @@
                                 <div id="description" class="container tab-pane active">
                                     <h4>Mô tả SP</h4>
                                     <p>
-                                        <?php echo $each['description'] ?>
+
+                                        <?php echo $each1['description'] ?>
                                 </div>
                                 <div id="specification" class="container tab-pane fade">
                                     <h4>Đặc điểm SP</h4>
@@ -208,8 +225,15 @@
                                     </ul>
                                 </div>
                                 <div id="reviews" class="container tab-pane fade">
+                                    <?php 
+                                   include'admin/connect.php';
+                                    $sql="select * from product_review where product_id='$id'";
+                                    $result=mysqli_query($connect,$sql);
+                                    $re=mysqli_fetch_array($result)
+                                ?>
+                                    <?php foreach($result as $rere) :?>
                                     <div class="reviews-submitted">
-                                        <div class="reviewer">ngô văn hòa - <span>lục ngạn- bắc giang</span></div>
+                                        <div class="reviewer"><?php echo $re['user_review'] ?></div>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -218,9 +242,10 @@
                                             <i class="fa fa-star"></i>
                                         </div>
                                         <p>
-                                            sản phẩm rất tốt sẽ mua thêm
+                                        <?php echo $re['review'] ?>
                                         </p>
                                     </div>
+                                    <?php endforeach ?>
                                     <div class="reviews-submit">
                                         <h4>Đánh giá:</h4>
                                         <div class="ratting">
@@ -230,20 +255,24 @@
                                             <i class="far fa-star"></i>
                                             <i class="far fa-star"></i>
                                         </div>
-                                        <div class="row form">
-                                            <div class="col-sm-6">
-                                                <input type="text" placeholder="Tên">
+
+                                        <form action="process_insert_review.php" method="$_POST">
+                                            <div class="row form">
+                                                <input type="hidden" value="<?php echo $id ?>" name="product_id">
+                                                <div class="col-sm-6">
+                                                    <input type="text" placeholder="Tên" name="user_review">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="email" placeholder="Email" name="user_email">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <textarea placeholder="Review" name="review"></textarea>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <button>Gửi</button>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <input type="email" placeholder="Email">
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <textarea placeholder="Review"></textarea>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <button>Gửi</button>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -269,39 +298,43 @@
                             ?>
                             <?php foreach ($result as $pro) : ?> <div class="col-lg-3">
 
-                                    <div class="product-item">
-                                        <div class="product-title">
-                                            <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><?php echo $pro['name'] ?></a>
-                                            <div class="ratting">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-image">
-                                            <a href="product-detail.php?id=<?php echo $pro['id'] ?>">
-                                                <img src="admin/products/photos/<?php echo $pro['image'] ?>">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                                <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><i class="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <h3><?php echo number_format($each['price'], 0, ',', '.') ?><span>đ</span></h3>
-                                            <?php if (!empty($_SESSION['id'])) {
-                                            ?>
-                                                <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                            <?php } else { ?>
-                                                <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                            <?php } ?>
+                                <div class="product-item">
+                                    <div class="product-title">
+                                        <a
+                                            href="product-detail.php?id=<?php echo $pro['id'] ?>"><?php echo $pro['name'] ?></a>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
                                         </div>
                                     </div>
+                                    <div class="product-image">
+                                        <a href="product-detail.php?id=<?php echo $pro['id'] ?>">
+                                            <img src="admin/products/photos/<?php echo $pro['image'] ?>">
+                                        </a>
+                                        <div class="product-action">
+                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                            <a href="#"><i class="fa fa-heart"></i></a>
+                                            <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><i
+                                                    class="fa fa-search"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-price">
+                                        <h3><?php echo number_format($pro['price'], 0, ',', '.') ?><span>đ</span></h3>
+                                        <?php if (!empty($_SESSION['id'])) {
+                                            ?>
+                                        <a class="btn" href="add_to_cart.php?id=<?php echo $pro['id'] ?>"><i
+                                                class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                        <?php } else { ?>
+                                        <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ
+                                            hàng</a>
+                                        <?php } ?>
+                                    </div>
+                                </div>
 
-                                </div> <?php endforeach ?>
+                            </div> <?php endforeach ?>
                             <!-- <div class="col-lg-3">
                                 <div class="product-item">
                                     <div class="product-title">
@@ -456,37 +489,41 @@
 
                         <div class="sidebar-slider normal-slider">
                             <?php foreach ($result as  $pro) : ?>
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><?php echo  $pro['name'] ?></a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.php?id=<?php echo $pro['id'] ?>">
-                                            <img src="admin/products/photos/<?php echo  $pro['image'] ?>">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><?php echo number_format($each['price'], 0, ',', '.') ?><span>đ</span></h3>
-                                        <?php if (!empty($_SESSION['id'])) {
-                                        ?>
-                                            <a class="btn" href="add_to_cart.php?id=<?php echo $each['id'] ?>"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                        <?php } else { ?>
-                                            <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
-                                        <?php } ?>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a
+                                        href="product-detail.php?id=<?php echo $pro['id'] ?>"><?php echo  $pro['name'] ?></a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </div>
                                 </div>
+                                <div class="product-image">
+                                    <a href="product-detail.php?id=<?php echo $pro['id'] ?>">
+                                        <img src="admin/products/photos/<?php echo  $pro['image'] ?>">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="product-detail.php?id=<?php echo $pro['id'] ?>"><i
+                                                class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h3><?php echo number_format($pro['price'], 0, ',', '.') ?><span>đ</span></h3>
+                                    <?php if (!empty($_SESSION['id'])) {
+                                        ?>
+                                    <a class="btn" href="add_to_cart.php?id=<?php echo $pro['id'] ?>"><i
+                                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                    <?php } else { ?>
+                                    <a class="btn" href="signin.php"><i class="fa fa-shopping-cart"></i>Thêm giỏ
+                                        hàng</a>
+                                    <?php } ?>
+                                </div>
+                            </div>
                             <?php endforeach ?>
                             <!-- <div class="product-item">
                                     <div class="product-title">
@@ -559,7 +596,8 @@
                 $result = mysqli_query($connect, $sql);
                 ?>
                 <?php foreach ($result as $each) : ?>
-                    <div class="brand-item"><img src="<?php echo $each['manufacturer_image'] ?>" height="100px" alt=""></div><?php endforeach ?>
+                <div class="brand-item"><img src="<?php echo $each['manufacturer_image'] ?>" height="100px" alt="">
+                </div><?php endforeach ?>
             </div>
         </div>
 

@@ -139,15 +139,22 @@
                                                             <option value="XL">XL</option>
                                                         </select> -->
                                                     </div>
-                                                    <!-- <div class="col-md-1 col-lg-2 col-xl-2 d-flex">
+                                                    <div class="col-md-1 col-lg-2 col-xl-2 d-flex">
+                                                    <?php
+                                                        include 'admin/connect.php';
+                                                        $sql = "select * from product_color";
+                                                        $resulttt = mysqli_query($connect, $sql);
+                                                        $si = mysqli_fetch_array($resulttt)
+                                                        ?>
+                                                        <select>
+                                                            <?php foreach ($resulttt as $si) : ?>
+                                                                <option value="<?php echo $si['color_id'] ?>" <?php if ($si['color_id'] == $_SESSION['cart'][$id]['color']) { ?> selected <?php } ?>>
 
-                                                        <select name="color" class="form-select">
-                                                            <option value="trắng">trắng</option>
-                                                            <option value="Đen">Đen</option>
-                                                            <option value="Xanh">Xanh</option>
-
+                                                                    <?php echo $si['color_name'] ?>
+                                                                </option>
+                                                            <?php endforeach ?>
                                                         </select>
-                                                    </div> -->
+                                                    </div>
                                                     <div class="col-md-1 col-lg-1 col-xl-2 ">
                                                         <h6 class="mb-0"><?php
                                                                             $result = $each['price'] * $each['quantity'];

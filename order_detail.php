@@ -100,6 +100,7 @@ where order_id = '$order_id'";
                         <th>Tên sản phẩm</th>
                         <th>Giá</th>
                         <th>size</th>
+                        <th>Màu</th>
                         <th>Số lượng</th>
                         <th>Tổng tiền</th>
                     </tr>
@@ -119,6 +120,16 @@ where order_id = '$order_id'";
                             $each1 = mysqli_fetch_array($result1)
                             ?>
                             <?php echo $each1['size_name'] ?>
+                        </td>
+                        <td>
+                            <?php
+
+                            $sisi = $each['color_product_id'];
+                            $sql1 = "select * from product_color where color_id=$sisi";
+                            $result1 = mysqli_query($connect, $sql1);
+                            $each1 = mysqli_fetch_array($result1)
+                            ?>
+                            <?php echo $each1['color_name'] ?>
                         </td>
                         <td>
                             <?php echo $each['quantity'] ?>

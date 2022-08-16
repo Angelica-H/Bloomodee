@@ -143,7 +143,7 @@
                                     </thead>
                                     <?php foreach ($result as $each) : ?>
                                         <tr>
-                                            <td><?php echo $each['id'] ?></td>
+                                           
                                             <td><?php echo $each['created_at'] ?></td>
                                             <td>
                                                 <?php echo $each['name_receiver'] ?><br>
