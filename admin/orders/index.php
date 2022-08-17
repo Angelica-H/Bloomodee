@@ -18,7 +18,7 @@ customers.phone_number,
 customers.address
 from orders
 join customers
-on customers.id = orders.customer_id";
+on customers.id = orders.customer_id ORDER BY id";
 $result = mysqli_query($connect,$sql);
 ?>
 <?php include'../menu.php' ?>

@@ -9,10 +9,10 @@
     else
     { 
         $id_size=$_GET['size_id'] ;
-    };
+    }
     if(empty($_GET['color_id']))
     {
-        $id_size=1;
+        $id_color=1;
     }
     else
     { 

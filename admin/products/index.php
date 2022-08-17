@@ -10,10 +10,15 @@ require '../check_admin_login.php'
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../css/menu.css">
-  <link rel="stylesheet" href="../css/table.css"><link rel="stylesheet" href="../css/bg-galaxy.css">
+  <link rel="stylesheet" href="../css/table.css">
+  <link rel="stylesheet" href="../css/bg-galaxy.css">
+
 </head>
 
 <body>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="../js/jquery.table2excel.min.js"></script>
   <?php
   require '../menu.php';
   include '../connect.php';
@@ -24,10 +29,16 @@ require '../check_admin_login.php'
   ?>
 
   <h1>quản lý sản phẩm </h1>
-  <div class="btn"><a href="form_insert.php">Thêm sản phẩm</a></div>
+  <div class="btn"><a href="form_insert.php">Thêm sản phẩm</a>
+    <br>
+    <button class="btn-success" style="padding:10px; border-radius:10px; margin-top:20px">
+      Xuất File Excel
+    </button>
+
+  </div>
   <h1 style="font-size: 20px;"><?php include '../notification.php' ?></h1>
 
-  <table border="1" width="100%">
+  <table border="1" width="100%" id="table2excel">
     <tr>
       <th>Mã</th>
       <th>Tên</th>
@@ -54,10 +65,21 @@ require '../check_admin_login.php'
       </tr>
     <?php endforeach ?>
   </table>
+
   <!-- hihi -->
 
   <!-- /.container -->
-  <script src="../js/js_table_ds.js"></script>
+
 </body>
+<script>
+  $("button").click(function() {
+    $("#table2excel").table2excel({
+      name: "Worksheet Name",
+      filename: "ThongKeSanPham",
+      fileext: ".xls"
+    })
+  });
+</script>
+<script src="../js/js_table_ds.js"></script>
 
 </html>

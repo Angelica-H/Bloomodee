@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 16, 2022 lúc 10:00 AM
+-- Thời gian đã tạo: Th8 17, 2022 lúc 01:16 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Phiên bản PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,9 +64,38 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone_number`, `address`, `token`) VALUES
-(1, 'hùng nguyen hung', 'nguyenvanhung0297@gmail.com', '321', '0961919603', 'hoàng mai hà nội', NULL),
+(1, 'Nguyen Hùng', 'nguyenvanhung0297@gmail.com', '1234', '0961919603', 'hoàng mai hà nội', NULL),
 (8, 'Quyết Tâm', 'ngotam@gmail.com', '123', '0132323123', '123', NULL),
 (9, 'hoa le thi', 'hoa@gmail.com', '123', '1010110110', 'ha noi', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `forgot_password`
+--
+
+CREATE TABLE `forgot_password` (
+  `customer_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `forgot_password`
+--
+
+INSERT INTO `forgot_password` (`customer_id`, `token`, `creat_at`) VALUES
+(1, '62fc9adfa9f03', '2022-08-17 07:38:07'),
+(1, '62fc9f1591db3', '2022-08-17 07:56:05'),
+(1, '62fc9fb8408c7', '2022-08-17 07:58:48'),
+(1, '62fca044d760b', '2022-08-17 08:01:08'),
+(1, '62fca61a985ad', '2022-08-17 08:26:02'),
+(1, '62fca669d4116', '2022-08-17 08:27:21'),
+(1, '62fca70f03d5d', '2022-08-17 08:30:07'),
+(1, '62fca785343d7', '2022-08-17 08:32:05'),
+(1, '62fca80838562', '2022-08-17 08:34:16'),
+(1, '62fca8a8758aa', '2022-08-17 08:36:56'),
+(1, '62fca9385479e', '2022-08-17 08:39:20');
 
 -- --------------------------------------------------------
 
@@ -116,13 +145,26 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `address_receiver`, `status`, `created_at`, `total_price`) VALUES
 (17, 1, 'hùng nguyen hung', '961919603', 'hoàng mai hà nội', '1', '2022-08-13 18:44:04', 400000),
-(18, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '0', '2022-08-14 05:41:02', 200000),
-(19, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '0', '2022-08-14 05:42:19', 200000),
-(20, 8, 'Quyết Tâm', '0132323123', '123', '0', '2022-08-14 07:46:45', 750000),
+(18, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '1', '2022-08-17 09:15:41', 200000),
+(19, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '1', '2022-08-17 09:15:40', 200000),
+(20, 8, 'Quyết Tâm', '0132323123', '123', '1', '2022-08-17 09:15:49', 750000),
 (21, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '0', '2022-08-15 09:33:28', 400000),
 (22, 1, 'hùng nguyen hung', '0961919603', 'hoàng mai hà nội', '0', '2022-08-15 09:38:24', 200000),
 (23, 9, 'Hoa', '1010110110', 'nam dinh', '2', '2022-08-16 04:24:17', 200000),
-(24, 9, 'hoa le thi', '1010110110', 'ha noi', '0', '2022-08-16 04:19:33', 500000);
+(24, 9, 'hoa le thi', '1010110110', 'ha noi', '0', '2022-08-16 04:19:33', 500000),
+(25, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '0', '2022-08-16 18:24:54', 200000),
+(26, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '2', '2022-08-17 10:52:36', 200000),
+(27, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '0', '2022-08-16 18:28:14', 400000),
+(28, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '1', '2022-08-17 09:15:43', 200000),
+(29, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '0', '2022-08-16 18:32:19', 400000),
+(30, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '2', '2022-08-17 10:52:34', 400000),
+(31, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '0', '2022-08-16 18:35:42', 400000),
+(32, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '2', '2022-08-17 10:52:38', 400000),
+(33, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '1', '2022-08-17 09:15:45', 400000),
+(34, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '2', '2022-08-17 10:52:40', 400000),
+(35, 1, 'Nguyen Hùng', '0961919603', 'hoàng mai hà nội', '1', '2022-08-17 09:15:47', 200000),
+(37, 8, 'Quyết Tâm', '0132323123', '123', '0', '2022-08-17 10:40:31', 200000),
+(38, 8, 'Quyết Tâm', '0132323123', '123', '0', '2022-08-17 10:46:50', 200000);
 
 -- --------------------------------------------------------
 
@@ -155,7 +197,21 @@ INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`, `size_product
 (22, 11, 1, 4, 3),
 (23, 9, 1, 2, 3),
 (24, 11, 1, 3, 3),
-(24, 15, 2, 1, 1);
+(24, 15, 2, 1, 1),
+(25, 10, 1, 1, 1),
+(26, 10, 1, 1, 1),
+(27, 11, 1, 1, 0),
+(27, 12, 1, 1, 0),
+(28, 11, 1, 1, 0),
+(29, 12, 2, 1, 0),
+(30, 12, 2, 1, 0),
+(31, 12, 2, 1, 0),
+(32, 12, 2, 1, 0),
+(33, 12, 2, 1, 0),
+(34, 12, 2, 1, 0),
+(35, 11, 1, 1, 1),
+(37, 11, 1, 1, 0),
+(38, 10, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -232,7 +288,9 @@ INSERT INTO `product_review` (`review_id`, `product_id`, `user_review`, `user_em
 (31, 11, 'ádasd', 'nguyenvanhung0297@gmail.com', 'sâdasdasdasd'),
 (32, 11, '14234', 'admin@gmail.com', 'sads'),
 (33, 11, 'hihihihi', 'nguyenvanhung110101@gmail.com', 'qưeqweqweqwe'),
-(34, 10, 'Hung', 'nguyenvanhung0297@gmail.com', 'qweqweqwe');
+(34, 10, 'Hung', 'nguyenvanhung0297@gmail.com', 'qweqweqwe'),
+(35, 10, 'Tam ', 'ngotam@gmail.com', 'Đánh giá test'),
+(36, 10, 'Tâm', 'sadmin@gmail.com', 'test ');
 
 -- --------------------------------------------------------
 
@@ -271,6 +329,12 @@ ALTER TABLE `admin`
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Chỉ mục cho bảng `forgot_password`
+--
+ALTER TABLE `forgot_password`
+  ADD UNIQUE KEY `token` (`token`);
 
 --
 -- Chỉ mục cho bảng `manufacturers`
@@ -344,7 +408,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -362,7 +426,7 @@ ALTER TABLE `product_color`
 -- AUTO_INCREMENT cho bảng `product_review`
 --
 ALTER TABLE `product_review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `product_size`

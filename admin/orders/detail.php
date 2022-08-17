@@ -14,17 +14,17 @@
 <body>
 
     <?php
-	include'../menu.php';
-	$order_id = $_GET['id'];
-	require '../connect.php';
-	$sql = "select 
+    include '../menu.php';
+    $order_id = $_GET['id'];
+    require '../connect.php';
+    $sql = "select 
 * 
 from order_product
 join products on products.id = order_product.product_id
-where order_id = '$order_id'";
-	$result = mysqli_query($connect, $sql);
-	$sum = 0;
-	?>
+where order_id = '$order_id' ";
+    $result = mysqli_query($connect, $sql);
+    $sum = 0;
+    ?>
     <h1>chi tiết đơn hàng</h1>
     <table border="1" width="100%">
         <tr>
@@ -37,43 +37,43 @@ where order_id = '$order_id'";
             <th>Tổng tiền</th>
         </tr>
         <?php foreach ($result as $each) : ?>
-        <tr>
-            <td><img height='100' src="../products/photos/<?php echo $each['image'] ?>"></td>
-            <td><?php echo $each['name'] ?></td>
-            <td><?php echo number_format($each['price'], 0, ',', '.') ?></td>
-            <!-- size -->
-            <td>
-                <?php
+            <tr>
+                <td><img height='100' src="../products/photos/<?php echo $each['image'] ?>"></td>
+                <td><?php echo $each['name'] ?></td>
+                <td><?php echo number_format($each['price'], 0, ',', '.') ?></td>
+                <!-- size -->
+                <td>
+                    <?php
 
-					$sisi = $each['size_product_id'];
-					$sql1 = "select * from product_size where size_id=$sisi";
-					$result1 = mysqli_query($connect, $sql1);
-					$each1 = mysqli_fetch_array($result1)
-					?>
-                <?php echo $each1['size_name'] ?>
-            </td>
-            <td>
-                <?php
+                    $sisi = $each['size_product_id'];
+                    $sql1 = "select * from product_size where size_id=$sisi";
+                    $result1 = mysqli_query($connect, $sql1);
+                    $each1 = mysqli_fetch_array($result1)
+                    ?>
+                    <?php echo $each1['size_name'] ?>
+                </td>
+                <td>
+                    <?php
 
-$sisi = $each['color_product_id'];
-$sql1 = "select * from product_color where color_id=$sisi";
-$result1 = mysqli_query($connect, $sql1);
-$each1 = mysqli_fetch_array($result1)
-?>
-                <?php echo $each1['color_name'] ?>
-            </td>
-            <td>
-                <?php echo $each['quantity'] ?>
-            </td>
+                    $sisi = $each['color_product_id'];
+                    $sql = "select * from product_color where color_id='$sisi'";
+                    $result = mysqli_query($connect, $sql);
+                    $each1 = mysqli_fetch_array($result)
+                    ?>
+                    <?php echo $each1['color_name'] ?>
+                </td>
+                <td>
+                    <?php echo $each['quantity'] ?>
+                </td>
 
-            <td>
-                <?php
-					$result = $each['price'] * $each['quantity'];
-					echo number_format($result, 0, ',', '.');
-					$sum += $result;
-					?>
-            </td>
-        </tr>
+                <td>
+                    <?php
+                    $result = $each['price'] * $each['quantity'];
+                    echo number_format($result, 0, ',', '.');
+                    $sum += $result;
+                    ?>
+                </td>
+            </tr>
         <?php endforeach ?>
     </table>
     <h1>
