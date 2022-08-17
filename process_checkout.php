@@ -38,7 +38,7 @@ $description='Quay lại trang web để kiểm tra đơn hàng';
 $mail_send=$email_receiver;
 $name=$name_receiver;
 $mail = new mailer();
-$mail->dathangmail($content,$mail_send,$name,$description);
+$mail->sendmail($content,$mail_send,$name,$description);
 
 mysqli_close($connect);
 unset($_SESSION['cart']);

@@ -76,7 +76,7 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="product-list.php">Sản phẩm</a></li>
-                <li class="breadcrumb-item active">Đăng nhập</li>
+                <li class="breadcrumb-item active">Quên mật khẩu</li>
             </ul>
         </div>
     </div>
@@ -120,9 +120,10 @@
                         </div>
                     </div> -->
 
-                <div class="col-lg-6 "><?php
-                                        if (isset($_GET['error'])) {
-                                        ?>
+                <div class="col-lg-6 ">
+                    <?php
+                    if (isset($_GET['error'])) {
+                    ?>
                         <span style="color: red;">
                             <?php echo $_GET['error']  ?>
                         </span>
@@ -134,36 +135,22 @@
                             <?php echo $_GET['success']  ?>
                         </span>
                     <?php } ?>
-
-
+                       
                     <div class="login-form">
-                        <form action="login_form/process_signin.php" method="POST">
+                        <form action="process_forgot_password.php" method="POST">
                             <div class="row">
+                                <div class="col-md-3">
+
+                                </div>
                                 <div class="col-md-6">
-                                    <label>E-mail</label>
+                                    <label>Nhập mail để đổi mật khẩu</label>
                                     <input class="form-control" type="text" placeholder="E-mail" name="email">
                                 </div>
-                                <div class="col-md-6">
-                                    <label>Mật khẩu</label>
-                                    <input class="form-control" type="password" placeholder="Mật khẩu" name="password">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="newaccount" name="remember">
-                                        <label class="custom-control-label" for="newaccount">lưu thông tin đăng nhập</label>
-                                        <br>
-                                      
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="custom-control custom-checkbox">
-                                       
-                                        <a href="forgot_password.php">Forgot password!!</a>
-                                    </div>
-                                </div>
+
+
                                 <div class="col-md-12">
-                                    <button class="btn">Đăng nhập</button>
-                                    
+                                    <button class="btn">Gửi mail</button>
+
                                 </div>
                             </div>
                         </form>

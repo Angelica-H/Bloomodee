@@ -1,3 +1,12 @@
+<?php
+$token = $_GET['token'];
+require 'admin/connect.php';
+$sql = "select * from forgot_password where token = '$token'";
+$result = mysqli_query($connect, $sql);
+if (mysqli_num_rows($result) !==1 ) {
+    header('location:index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +85,7 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="product-list.php">Sản phẩm</a></li>
-                <li class="breadcrumb-item active">Đăng nhập</li>
+                <li class="breadcrumb-item active">đổi mật khẩu</li>
             </ul>
         </div>
     </div>
@@ -135,35 +144,35 @@
                         </span>
                     <?php } ?>
 
-
                     <div class="login-form">
-                        <form action="login_form/process_signin.php" method="POST">
+                        <form action="process_change_new_pasword.php" method="POST">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>E-mail</label>
-                                    <input class="form-control" type="text" placeholder="E-mail" name="email">
+                                    <input type="hidden" name="token" value="<?php echo $token ?>">
+                                    <label>Nhập mật khẩu mới</label>
+                                    <input class="form-control" type="text" placeholder="Nhập mật khẩu mới" name="password">
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <label>Mật khẩu</label>
                                     <input class="form-control" type="password" placeholder="Mật khẩu" name="password">
-                                </div>
-                                <div class="col-md-9">
+                                </div> -->
+                                <!-- <div class="col-md-9">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="newaccount" name="remember">
                                         <label class="custom-control-label" for="newaccount">lưu thông tin đăng nhập</label>
                                         <br>
-                                      
+
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="custom-control custom-checkbox">
-                                       
+
                                         <a href="forgot_password.php">Forgot password!!</a>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-12">
-                                    <button class="btn">Đăng nhập</button>
-                                    
+                                    <button class="btn">Đổi mật khẩu</button>
+
                                 </div>
                             </div>
                         </form>
