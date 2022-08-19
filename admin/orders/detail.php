@@ -54,8 +54,13 @@ where order_id = '$order_id' ";
                 </td>
                 <td>
                     <?php
+                    if (empty($each['color_product_id'])) {
+                        $sisi = 1;
+                    } else {
+                        $sisi = $each['color_product_id'];
+                    }
 
-                    $sisi = $each['color_product_id'];
+
                     $sql = "select * from product_color where color_id='$sisi'";
                     $result = mysqli_query($connect, $sql);
                     $each1 = mysqli_fetch_array($result)

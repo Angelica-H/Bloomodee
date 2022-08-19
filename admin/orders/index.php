@@ -78,6 +78,7 @@ $result = mysqli_query($connect,$sql);
 					Huỷ
 				</a>
 			</td>
+			<td><a href="process_order_printing.php?id=<?php echo $each['id'] ?>">In Đơn hàng</a></td>
 		</tr>
 	<?php endforeach ?>
 </table>
