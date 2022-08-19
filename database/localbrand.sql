@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 17, 2022 lúc 01:16 PM
+-- Thời gian đã tạo: Th8 19, 2022 lúc 12:59 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 7.4.29
 
@@ -64,7 +64,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone_number`, `address`, `token`) VALUES
-(1, 'Nguyen Hùng', 'nguyenvanhung0297@gmail.com', '1234', '0961919603', 'hoàng mai hà nội', NULL),
+(1, 'Nguyen Hùng', 'nguyenvanhung0297@gmail.com', '123', '0961919603', 'hoàng mai hà nội', NULL),
 (8, 'Quyết Tâm', 'ngotam@gmail.com', '123', '0132323123', '123', NULL),
 (9, 'hoa le thi', 'hoa@gmail.com', '123', '1010110110', 'ha noi', NULL);
 
@@ -95,7 +95,11 @@ INSERT INTO `forgot_password` (`customer_id`, `token`, `creat_at`) VALUES
 (1, '62fca785343d7', '2022-08-17 08:32:05'),
 (1, '62fca80838562', '2022-08-17 08:34:16'),
 (1, '62fca8a8758aa', '2022-08-17 08:36:56'),
-(1, '62fca9385479e', '2022-08-17 08:39:20');
+(1, '62fca9385479e', '2022-08-17 08:39:20'),
+(1, '62fcd225d30cb', '2022-08-17 11:33:57'),
+(1, '62fcd22816499', '2022-08-17 11:34:00'),
+(1, '62fcd2291c88a', '2022-08-17 11:34:01'),
+(1, '62fcd2295715b', '2022-08-17 11:34:01');
 
 -- --------------------------------------------------------
 
