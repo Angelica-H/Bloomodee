@@ -302,11 +302,11 @@
     <div class="featured-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1>Sản phẩm nổi bật</h1>
+                <h1>Sản phẩm Mới</h1>
             </div>
             <?php
             require 'admin/connect.php';
-            $sql = "select * from products";
+            $sql = "select * from products ORDER BY `id` DESC";
             $result = mysqli_query($connect, $sql);
             ?>
             <div class="row align-items-center product-slider product-slider-4">
@@ -492,7 +492,14 @@
                 <h1>Sản phẩm gần đây</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                <?php foreach ($result as $each) : ?>
+            <?php
+            require 'admin/connect.php';
+            $sql = "select * from products ";
+            $result1 = mysqli_query($connect, $sql);
+            
+            ?>
+
+                <?php foreach ($result1 as $each) : ?>
                     <div class="col-lg-3">
                         <div class="product-item">
                             <div class="product-title rounded-top">

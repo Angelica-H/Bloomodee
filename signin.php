@@ -53,7 +53,7 @@
                         <button><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <div class="user">
                         <a href="wishlist.html" class="btn wishlist">
                             <i class="fa fa-heart"></i>
@@ -64,7 +64,7 @@
                             <span>(0)</span>
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
