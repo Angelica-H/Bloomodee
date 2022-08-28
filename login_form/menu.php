@@ -11,6 +11,7 @@ session_start();
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link">Bloomode</a>
                     <a href="index.php" class="nav-item nav-link">Trang chủ</a>
                     <a href="product-list.php" class="nav-item nav-link">Sản phẩm</a>
                     <!-- <a href="product-detail.php" class="nav-item nav-link">Chi tiết SP</a> -->

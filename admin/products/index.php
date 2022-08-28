@@ -80,6 +80,6 @@ require '../check_admin_login.php'
     })
   });
 </script>
-<script src="../js/js_table_ds.js"></script>
+<script src="../js/table.js"></script>
 
 </html>
